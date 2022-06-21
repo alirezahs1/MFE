@@ -2,22 +2,24 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 import { createBrowserHistory } from 'history'
+import { RemoteContext } from './contexts/remote'
 
-const mount = (el, basename="/") => {
+const mount = ({el, basename="/", isRemote=false}) => {
 	
 	const history = createBrowserHistory();
-
-	const root = createRoot(el)
+	const root = createRoot(el);
 
 	root.render(
-		<App history={history} basename={basename} />
+		<RemoteContext.Provider value={{isRemote, history, basename}}>
+			<App />
+		</RemoteContext.Provider>
 	)
 }
 
 if (process.env.NODE_ENV === 'development') {
 	const devRoot = document.querySelector('#profile-app')
 	if (devRoot) {
-		mount(devRoot)
+		mount({el: devRoot})
 	}
 }
 

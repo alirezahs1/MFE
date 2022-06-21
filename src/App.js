@@ -1,34 +1,20 @@
 import React from 'react';
-import ProfileApp from './profileApp';
-import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { BrowserRouter } from "react-router-dom";
+import { Navbar } from './components/navbar';
+import { Container } from './components/ui/layout';
+import { AppRoutes } from './routes';
+import './assets/styles/globals.css';
 
-const history = createBrowserHistory();
-
-const Header = () => (
-	<div>
-		<Link to='/'>home</Link><br />
-		<Link to='/profile/'>Profile</Link>
-	</div >
-)
-
-const HomePage = () => <h1>Home Page</h1>;
-
-export default () => {
+export default function App({className}){
 	return (
-		<BrowserRouter>
-			<Header />
-
-			<hr/>
-
-			<Routes>
-				<Route path='' element={<HomePage />} />
-				<Route path='/profile/*' element={<ProfileApp basename="/profile" />} />
-			</Routes>
-			{/* Conatiner <br/> */}
-
-			{/* <ProfileApp />  */}
-
-		</BrowserRouter>
+		<div className={className}>
+			<BrowserRouter>
+				<Navbar />
+				{/** TODO: Add Suspense / Lazy Load */}
+				<Container style={{paddingTop: 25}}>
+					<AppRoutes />
+				</Container>
+			</BrowserRouter>
+		</div>
 	)
 }

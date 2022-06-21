@@ -1,5 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-
 module.exports = {
 	module: {
 		rules: [
@@ -9,16 +7,18 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-react', '@babel/preset-env'],
+						presets: [
+							["@babel/preset-react", { "runtime": "automatic" }],
+							'@babel/preset-env'
+						],
 						plugins: ['@babel/plugin-transform-runtime'],
 					}
 				}
-			}
+			},
+			{
+				test: /\.css$/i,
+				use: ["style-loader", "css-loader"],
+			},
 		]
-	},
-	plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html'
-        })
-    ]
+	}
 }
