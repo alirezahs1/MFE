@@ -4,13 +4,13 @@ import App from './App'
 import { createBrowserHistory } from 'history'
 import { RemoteContext } from './contexts/remote'
 
-const mount = ({el, basename="/", isRemote=false}) => {
+const mount = ({el, basename="/", isRemote=false, afterLogin}) => {
 	
 	const history = createBrowserHistory();
 	const root = createRoot(el);
 
 	root.render(
-		<RemoteContext.Provider value={{isRemote, history, basename}}>
+		<RemoteContext.Provider value={{isRemote, history, basename, afterLogin}}>
 			<App />
 		</RemoteContext.Provider>
 	)

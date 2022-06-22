@@ -1,23 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { lazy, useContext, useEffect } from "react";
 import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
-import { JWTAuthentication } from "auth/utils";
+import { PrivateRoute } from "auth/private-route";
 import { UserLayout } from "./components/user-layout";
 import { RemoteContext } from "./contexts/remote";
-import { DashboardPage } from "./pages/dashboard/dashboard";
+
+const DashboardPage = lazy(() => import("./pages/dashboard"))
 
 export default () => {
 
 	const { history, basename, isRemote } = useContext(RemoteContext);
-
-	useEffect(() => {
-
-		(async () => {
-			const auth = new JWTAuthentication();
-			// await auth.basicLogin("admin", "admin");
-			console.log(auth.isAuthenticated());
-		})()
-
-	}, [])
 
 	useEffect(() => {
 		if (!isRemote) {
@@ -27,11 +18,13 @@ export default () => {
 
 	return (
 		<BrowserRouter history={history} basename={basename}>
-			<UserLayout>
-				<Routes>
-					<Route path="/" element={<DashboardPage />} />
-				</Routes>
-			</UserLayout>
+			<PrivateRoute>
+				<UserLayout>
+					<Routes>
+						<Route path="/" element={<DashboardPage />} />
+					</Routes>
+				</UserLayout>
+			</PrivateRoute>
 		</BrowserRouter>
 	)
 }

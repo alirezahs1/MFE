@@ -23,14 +23,14 @@ const Style = styled.li`
 	`}
 `
 
-export const SidebarNavItem = ({className, label, to, exact}) => {
+export const SidebarNavItem = ({className, label, to, exact, ...rest}) => {
 
 	const resolved = useResolvedPath(to);
 	const isActive = !!useMatch({ path: resolved.pathname, end: exact });
 
 	return (
 		<Style className={className} isActive={isActive}>
-			<Link to={to}>
+			<Link to={to} {...rest}>
 				{label}
 			</Link>
 		</Style>

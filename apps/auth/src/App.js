@@ -1,18 +1,26 @@
-import React, { useContext, useEffect } from "react";
+import React, { lazy, Suspense, useContext, useEffect } from "react";
 import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
-import { Input } from "./components/ui/input";
 import { RemoteContext } from "./contexts/remote";
-import LoginPage from "./pages/login";
+
+const LoginPage = lazy(() => import("./pages/login"))
 
 export default () => {
 
 	const { history, basename, isRemote } = useContext(RemoteContext);
 
+	useEffect(() => {
+		if (!isRemote) {
+			import("./assets/styles/globals.css");
+		}
+	}, [isRemote])
+
 	return (
 		<BrowserRouter history={history} basename={basename}>
-			<Routes>
-				<Route path="/" element={<LoginPage />} />
-			</Routes>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Routes>
+					<Route path="/" element={<LoginPage />} />
+				</Routes>
+			</Suspense>
 		</BrowserRouter>
 	)
 }

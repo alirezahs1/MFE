@@ -1,4 +1,4 @@
-import { mount } from 'profile/App'
+import { mount } from 'profile/bootstrap'
 import React, { useRef, useEffect } from 'react'
 
 export default function ProfilePage({basename}) {

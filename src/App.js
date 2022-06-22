@@ -10,8 +10,7 @@ export default function App({className}){
 		<div className={className}>
 			<BrowserRouter>
 				<Navbar />
-				{/** TODO: Add Suspense / Lazy Load */}
-				<Container style={{paddingTop: 25}}>
+				<Container style={{paddingTop: 20}}>
 					<AppRoutes />
 				</Container>
 			</BrowserRouter>

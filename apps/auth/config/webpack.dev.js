@@ -22,7 +22,8 @@ const devConfig = {
 			filename: 'remoteEntry.js',
 			exposes: {
 				'./utils': './src/utils',
-				'./App': './src/bootstrap'
+				'./private-route': './src/components/private-route',
+				'./bootstrap': './src/bootstrap'
 			},
 			shared: packageJson.dependencies
 		}),

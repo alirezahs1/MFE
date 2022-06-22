@@ -21,7 +21,7 @@ const devConfig = {
 			name: 'profile',
 			filename: 'remoteEntry.js',
 			exposes: {
-				'./App': './src/bootstrap'
+				'./bootstrap': './src/bootstrap'
 			},
 			remotes: {
 				'auth': 'auth@http://localhost:3002/remoteEntry.js',

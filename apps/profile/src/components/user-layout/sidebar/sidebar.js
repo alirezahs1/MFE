@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { JWTAuthentication } from 'auth/utils'
 import { Card } from '../../ui/card'
 import { SidebarNav } from './sidebar-nav'
 
@@ -34,7 +35,7 @@ export const Sidebar = ({className}) => {
 		},
 		{
 			label: 'Logout',
-			to: '/logout'
+			to: '/logout',
 		},
 	]
 

@@ -9,6 +9,11 @@ export const Button = styled.button`
 		border: none;
 		cursor: pointer;
 		font-size: 1.5em;
+		transition: background-color .2s;
+		&:hover, &:focus {
+			background-color: #1d4ed8;
+			outline: none;
+		}
 		${block ? `
 			width: 100%;
 		` : ""}
