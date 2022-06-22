@@ -1,11 +1,11 @@
-import { mount } from 'profile/ProfileApp'
+import { mount } from 'auth/App'
 import React, { useRef, useEffect } from 'react'
 
-export default ({basename}) => {
+export default function AuthPage({basename}) {
 	const ref = useRef(null);
 
 	useEffect(() => {
-		mount(ref.current, basename)
+		mount({el: ref.current, basename, isRemote: true})
 	}, [])
 
 	return <div ref={ref} />

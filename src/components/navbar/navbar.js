@@ -16,15 +16,23 @@ export const Navbar = ({className}) => {
 		},
 		{
 			label: 'Profile',
-			to: '/profile'
+			to: '/profile/'
 		},
 		{
-			label: 'About',
-			to: '/about'
+			label: 'Login',
+			to: '/auth/'
 		},
 		{
-			label: 'Contact',
-			to: '/contact'
+			label: 'Other',
+			to: '/other'
+		},
+		{
+			label: 'Another',
+			to: '/another'
+		},
+		{
+			label: 'Some',
+			to: '/some'
 		},
 	]
 

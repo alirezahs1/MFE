@@ -8,23 +8,21 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const devConfig = {
 	mode: 'development',
 	output: {
-		publicPath: 'http://localhost:3001/',
+		publicPath: 'http://localhost:3002/',
 	},
 	devServer: {
-		port: 3001,
+		port: 3002,
 		historyApiFallback: {
 			index: '/index.html'
 		}
 	},
 	plugins: [
 		new ModuleFederationPlugin({
-			name: 'profile',
+			name: 'auth',
 			filename: 'remoteEntry.js',
 			exposes: {
+				'./utils': './src/utils',
 				'./App': './src/bootstrap'
-			},
-			remotes: {
-				'auth': 'auth@http://localhost:3002/remoteEntry.js',
 			},
 			shared: packageJson.dependencies
 		}),
