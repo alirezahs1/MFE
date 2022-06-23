@@ -50,7 +50,7 @@ export class JWTAuthentication {
 	
 	isSessionAuthenticated() {
 		/**
-		 * Check localSotrage for validated access token
+		 * Check sessionSotrage for validated access token
 		 * @returns Boolean
 		 */
 
@@ -64,7 +64,7 @@ export class JWTAuthentication {
 
 	isQueryAuthenticated(key='token') {
 		/**
-		 * Check given queryParams and search for valida `token` param
+		 * Check given queryParams and search for valid `token` param
 		 * @returns Boolean
 		 */
 
@@ -75,8 +75,11 @@ export class JWTAuthentication {
 		const token = params[key];
 
 		if (token) {
-			this.#updateSessionAccess(token);
-			return this.#isValidAccess(token)
+			if (this.#isValidAccess(token)) {
+				this.#updateSessionAccess(token);
+				return true;
+			}
+			return false;
 		}
 
 		return false;
