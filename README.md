@@ -1,5 +1,5 @@
 # MFE (Micro Front-end)
-The project includes 3 different projects:
+The repository includes 3 different projects:
 1. Container (Host): The root project that will run on port `3000`
 2. Profile: The first remote project based in `apps/profile` directory. It will run on port `3001`
 3. Auth: The second remote project based in `apps/auth` directory. It will run on port `3002`
@@ -29,5 +29,6 @@ npm i
 npm run start
 ```
 
-### Screenshot
-![Screenshot](https://raw.githubusercontent.com/alirezahs1/MFE/master/screenshot.gif)
+### Demo
+https://user-images.githubusercontent.com/21290327/175237205-534697f7-5e0c-446b-ad79-f916733f113f.mp4
+
