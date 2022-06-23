@@ -1,4 +1,4 @@
-import React, { lazy, useContext, useEffect } from "react";
+import React, { lazy, Suspense, useContext, useEffect } from "react";
 import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
 import { PrivateRoute } from "auth/private-route";
 import { UserLayout } from "./components/user-layout";
@@ -20,9 +20,11 @@ export default () => {
 		<BrowserRouter history={history} basename={basename}>
 			<PrivateRoute>
 				<UserLayout>
-					<Routes>
-						<Route path="/" element={<DashboardPage />} />
-					</Routes>
+					<Suspense fallback={<div>Loading...</div>}>
+						<Routes>
+							<Route path="/" element={<DashboardPage />} />
+						</Routes>
+					</Suspense>
 				</UserLayout>
 			</PrivateRoute>
 		</BrowserRouter>
